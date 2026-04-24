@@ -1,0 +1,6 @@
+pdfplumber>=0.10.0
+reportlab>=4.0.0
+
+# wkhtmltopdf must be installed at OS level:
+# Ubuntu/Debian: sudo apt-get install wkhtmltopdf
+# The Python script uses it via subprocess

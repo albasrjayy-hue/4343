@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>منظم التقارير - Delivery Organizer</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="app-header">
+            <div class="logo-section">
+                <svg class="logo-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z"/>
+                    <path d="M5 17H3V6a1 1 0 011-1h11v12"/>
+                    <path d="M13 6h4a1 1 0 011 1v11"/>
+                    <path d="M8 21h8"/>
+                    <path d="M12 17v4"/>
+                </svg>
+                <div class="logo-text">
+                    <h1>منظم التقارير</h1>
+                    <span>Delivery Organizer</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Card -->
+        <main class="main-card">
+            <!-- Title Section -->
+            <section class="title-section">
+                <h2>إعادة تنظيم تقارير التوصيل</h2>
+                <p>قم برفع ملف PDF الأصلي وسنقوم بإعادة ترتيب الصفوف حسب المتجر</p>
+            </section>
+
+            <!-- Upload Section -->
+            <section class="upload-section" id="uploadSection">
+                <div class="upload-zone" id="uploadZone">
+                    <input type="file" id="fileInput" accept=".pdf" hidden>
+                    <div class="upload-content">
+                        <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"/>
+                        </svg>
+                        <h3>اسحب ملف PDF هنا</h3>
+                        <p>أو انقر للاختيار من الملفات</p>
+                    </div>
+                </div>
+                <div class="file-info" id="fileInfo" style="display: none;">
+                    <svg class="file-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/>
+                        <path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/>
+                    </svg>
+                    <div class="file-details">
+                        <span class="file-name" id="fileName"></span>
+                        <span class="file-size" id="fileSize"></span>
+                    </div>
+                    <button class="remove-btn" id="removeBtn" title="إزالة الملف">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Process Button -->
+            <section class="process-section" id="processSection" style="display: none;">
+                <button class="process-btn" id="processBtn">
+                    <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <span>معالجة الملف</span>
+                </button>
+            </section>
+
+            <!-- Status Section -->
+            <section class="status-section" id="statusSection" style="display: none;">
+                <div class="status-card" id="statusCard">
+                    <div class="status-icon" id="statusIcon">
+                        <svg class="spinner" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2v4m0 12v4m10-10h-4M6 12H2m15.364-6.364l-2.828 2.828M9.464 14.536l-2.828 2.828m12.728 0l-2.828-2.828M9.464 9.464L6.636 6.636"/>
+                        </svg>
+                    </div>
+                    <div class="status-content">
+                        <h4 id="statusTitle">جاري المعالجة...</h4>
+                        <p id="statusMessage">يرجى الانتظار</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Result Section -->
+            <section class="result-section" id="resultSection" style="display: none;">
+                <div class="result-card" id="resultCard">
+                    <div class="result-icon success">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <div class="result-content">
+                        <h4>تمت المعالجة بنجاح</h4>
+                        <div class="stats-grid" id="statsGrid"></div>
+                    </div>
+                    <button class="download-btn" id="downloadBtn">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                        </svg>
+                        <span>تحميل الملف</span>
+                    </button>
+                </div>
+            </section>
+
+            <!-- Error Section -->
+            <section class="error-section" id="errorSection" style="display: none;">
+                <div class="error-card">
+                    <div class="error-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <div class="error-content">
+                        <h4>حدث خطأ</h4>
+                        <p id="errorMessage"></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer Rules -->
+        <footer class="app-footer">
+            <div class="rules-container">
+                <span class="rule-tag">PDF</span>
+                <span class="rule-tag">Arabic</span>
+                <span class="rule-tag">RTL</span>
+                <span class="rule-tag">Print-Ready</span>
+            </div>
+            <p class="copyright">Delivery Organizer Tool</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

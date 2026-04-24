@@ -1,0 +1,14 @@
+{
+  "name": "delivery-organizer",
+  "version": "2.0.0",
+  "description": "Delivery report PDF organizer – zero npm dependencies",
+  "main": "server/app.js",
+  "scripts": {
+    "start": "node server/app.js",
+    "dev": "node server/app.js"
+  },
+  "dependencies": {},
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

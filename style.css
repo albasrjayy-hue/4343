@@ -1,0 +1,617 @@
+/* ========================================
+   DELIVERY ORGANIZER - PREMIUM DARK THEME
+   ======================================== */
+
+:root {
+    --bg-primary: #0B1020;
+    --bg-secondary: #0F172A;
+    --bg-card: #121A2B;
+    --border-color: #24324A;
+    --text-primary: #F3F6FF;
+    --text-secondary: #94A3B8;
+    --accent-primary: #4F7CFF;
+    --accent-hover: #3B6EF5;
+    --accent-glow: rgba(79, 124, 255, 0.18);
+    --success: #22C55E;
+    --error: #EF4444;
+    --warning: #F59E0B;
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 16px;
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 20px rgba(0, 0, 0, 0.4);
+    --shadow-glow: 0 0 30px var(--accent-glow);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 16px;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'IBM Plex Sans Arabic', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    min-height: 100vh;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ========================================
+   APP CONTAINER
+   ======================================== */
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+/* ========================================
+   HEADER
+   ======================================== */
+
+.app-header {
+    padding: 20px 0 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-section {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.logo-icon {
+    width: 42px;
+    height: 42px;
+    color: var(--accent-primary);
+    filter: drop-shadow(0 0 10px var(--accent-glow));
+}
+
+.logo-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo-text h1 {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.logo-text span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+}
+
+/* ========================================
+   MAIN CARD
+   ======================================== */
+
+.main-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 32px 24px;
+    box-shadow: var(--shadow-md), var(--shadow-glow);
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+/* ========================================
+   TITLE SECTION
+   ======================================== */
+
+.title-section {
+    text-align: center;
+    padding-bottom: 24px;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.title-section h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.title-section p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    font-weight: 400;
+}
+
+/* ========================================
+   UPLOAD SECTION
+   ======================================== */
+
+.upload-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.upload-zone {
+    background: var(--bg-secondary);
+    border: 2px dashed var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 40px 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.upload-zone:hover,
+.upload-zone.drag-over {
+    border-color: var(--accent-primary);
+    background: rgba(79, 124, 255, 0.05);
+    box-shadow: inset 0 0 20px var(--accent-glow);
+}
+
+.upload-zone.drag-over {
+    transform: scale(1.02);
+}
+
+.upload-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.upload-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--accent-primary);
+    opacity: 0.8;
+    transition: var(--transition);
+}
+
+.upload-zone:hover .upload-icon {
+    opacity: 1;
+    transform: translateY(-4px);
+}
+
+.upload-content h3 {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+.upload-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* File Info */
+.file-info {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 16px;
+}
+
+.file-icon {
+    width: 36px;
+    height: 36px;
+    color: var(--accent-primary);
+    flex-shrink: 0;
+}
+
+.file-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.file-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.file-size {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+    margin-top: 2px;
+}
+
+.remove-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: none;
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--error);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition);
+    flex-shrink: 0;
+}
+
+.remove-btn:hover {
+    background: var(--error);
+    color: white;
+}
+
+.remove-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* ========================================
+   PROCESS SECTION
+   ======================================== */
+
+.process-section {
+    display: flex;
+    justify-content: center;
+}
+
+.process-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 32px;
+    background: linear-gradient(135deg, var(--accent-primary), var(--accent-hover));
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(79, 124, 255, 0.35);
+}
+
+.process-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(79, 124, 255, 0.45);
+}
+
+.process-btn:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+.process-btn:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.process-btn .btn-icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* ========================================
+   STATUS SECTION
+   ======================================== */
+
+.status-section {
+    display: flex;
+    justify-content: center;
+}
+
+.status-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    min-width: 280px;
+}
+
+.status-icon {
+    width: 44px;
+    height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.spinner {
+    width: 36px;
+    height: 36px;
+    color: var(--accent-primary);
+    animation: spin 1.5s linear infinite;
+}
+
+@keyframes spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.status-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    margin-bottom: 4px;
+}
+
+.status-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+/* ========================================
+   RESULT SECTION
+   ======================================== */
+
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.result-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    background: var(--bg-secondary);
+    border: 1px solid var(--success);
+    border-radius: var(--radius-md);
+    padding: 24px;
+}
+
+.result-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: rgba(34, 197, 94, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.result-icon.success svg {
+    width: 32px;
+    height: 32px;
+    color: var(--success);
+}
+
+.result-content {
+    text-align: center;
+    width: 100%;
+}
+
+.result-content h4 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--success);
+    margin-bottom: 16px;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+}
+
+.stat-item {
+    background: var(--bg-card);
+    border-radius: var(--radius-sm);
+    padding: 14px;
+    text-align: center;
+}
+
+.stat-value {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent-primary);
+    display: block;
+}
+
+.stat-label {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    display: block;
+}
+
+.download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    padding: 14px 24px;
+    background: var(--success);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+    transition: var(--transition);
+    box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+}
+
+.download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 25px rgba(34, 197, 94, 0.4);
+}
+
+.download-btn svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* ========================================
+   ERROR SECTION
+   ======================================== */
+
+.error-section {
+    display: flex;
+    justify-content: center;
+}
+
+.error-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: var(--radius-md);
+    padding: 20px 24px;
+    max-width: 100%;
+}
+
+.error-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: rgba(239, 68, 68, 0.15);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.error-icon svg {
+    width: 24px;
+    height: 24px;
+    color: var(--error);
+}
+
+.error-content h4 {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--error);
+    margin-bottom: 6px;
+}
+
+.error-content p {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+    word-break: break-word;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+
+.app-footer {
+    padding: 24px 0 16px;
+    text-align: center;
+}
+
+.rules-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+}
+
+.rule-tag {
+    font-size: 0.7rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 20px;
+    padding: 4px 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.copyright {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    opacity: 0.7;
+}
+
+/* ========================================
+   RESPONSIVE
+   ======================================== */
+
+@media (max-width: 480px) {
+    .app-container {
+        padding: 12px;
+    }
+
+    .main-card {
+        padding: 24px 16px;
+        border-radius: var(--radius-md);
+    }
+
+    .title-section h2 {
+        font-size: 1.2rem;
+    }
+
+    .upload-zone {
+        padding: 32px 16px;
+    }
+
+    .upload-icon {
+        width: 40px;
+        height: 40px;
+    }
+
+    .process-btn,
+    .download-btn {
+        width: 100%;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ========================================
+   UTILITY CLASSES
+   ======================================== */
+
+.hidden {
+    display: none !important;
+}
+
+.fade-in {
+    animation: fadeIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
